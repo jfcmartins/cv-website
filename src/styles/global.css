@@ -6,7 +6,7 @@
   --bg-inset: #eef0f3;
   --text: #14181f;
   --text-muted: #565f6e;
-  --text-faint: #8890a0;
+  --text-faint: #6a707c;
   --border: #e2e5ea;
   --accent: #0f9d68;
   --accent-strong: #0b7a51;
@@ -27,7 +27,7 @@
     --bg-inset: #171b23;
     --text: #e9ecf2;
     --text-muted: #a3abba;
-    --text-faint: #6b7280;
+    --text-faint: #798191;
     --border: #232834;
     --accent: #22c58b;
     --accent-strong: #3fe3a6;
@@ -61,7 +61,21 @@
 }
 
 html {
-  scroll-behavior: smooth;
+  scroll-behavior: auto;
+}
+
+/* Anchored sections (nav links, #experience etc.) would otherwise land
+   flush with the viewport top, right behind the sticky header. */
+section[id] {
+  scroll-margin-top: 85px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
 }
 
 body {

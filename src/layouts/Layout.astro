@@ -204,5 +204,30 @@ const nav = [
         });
       })();
     </script>
+
+    <script is:inline>
+      // scroll-behavior:smooth on <html> breaks Chrome's native jump-to-#hash
+      // on initial page load, so that's left instant (see global.css). This
+      // restores a smooth scroll, but only for same-page anchor clicks.
+      (function () {
+        document.addEventListener('click', function (e) {
+          const link = e.target.closest('a[href*="#"]');
+          if (!link) return;
+          let url;
+          try {
+            url = new URL(link.href, location.href);
+          } catch (err) {
+            return;
+          }
+          if (url.pathname !== location.pathname || !url.hash) return;
+          const target = document.getElementById(url.hash.slice(1));
+          if (!target) return;
+          e.preventDefault();
+          const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+          target.scrollIntoView({ behavior: reduceMotion ? 'auto' : 'smooth', block: 'start' });
+          history.pushState(null, '', url.hash);
+        });
+      })();
+    </script>
   </body>
 </html>
