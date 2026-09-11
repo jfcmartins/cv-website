@@ -92,7 +92,13 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
         </div>
       ))}
     </div>
+  </section>
 
+  <hr class="rule wrap" />
+
+  <section class="wrap" id="certifications">
+    <p class="eyebrow">Credentials</p>
+    <h2 class="section-title">Certifications</h2>
     <div class="cert-row">
       {certifications.map((c) => (
         <div class="cert card">
@@ -359,7 +365,6 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
     }
 
     .cert-row {
-      margin-top: 1rem;
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
       gap: 0.9rem;
