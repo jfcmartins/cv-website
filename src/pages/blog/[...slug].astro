@@ -1,0 +1,100 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { getCollection, render } from 'astro:content';
+
+export async function getStaticPaths() {
+  const posts = await getCollection('blog', ({ data }) => !data.draft);
+  return posts.map((post) => ({
+    params: { slug: post.id },
+    props: { post },
+  }));
+}
+
+const { post } = Astro.props;
+const { Content } = await render(post);
+---
+
+<Layout title={`${post.data.title} — Jorge Martins`} description={post.data.description}>
+  <article class="wrap post">
+    <a class="back" href="/blog">&larr; Back to blog</a>
+    <p class="mono muted small">
+      {post.data.pubDate.toLocaleDateString('en-GB', { year: 'numeric', month: 'short', day: 'numeric' })}
+    </p>
+    <h1>{post.data.title}</h1>
+    {post.data.tags.length > 0 && (
+      <div class="tag-row">
+        {post.data.tags.map((tag) => (
+          <span class="tag">{tag}</span>
+        ))}
+      </div>
+    )}
+    <div class="content">
+      <Content />
+    </div>
+  </article>
+
+  <style>
+    .post {
+      padding-block: 3rem 4rem;
+      max-width: 720px;
+    }
+
+    .back {
+      font-size: 0.88rem;
+      color: var(--text-muted);
+      display: inline-block;
+      margin-bottom: 1.5rem;
+    }
+
+    h1 {
+      font-size: clamp(1.7rem, 4vw, 2.3rem);
+      margin: 0.4rem 0 0.8rem;
+    }
+
+    .small {
+      font-size: 0.8rem;
+    }
+
+    .tag-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+      margin-bottom: 2rem;
+    }
+
+    .content {
+      font-size: 1.03rem;
+      color: var(--text);
+    }
+
+    .content :global(h2) {
+      margin-top: 2.2rem;
+      font-size: 1.35rem;
+    }
+
+    .content :global(h3) {
+      margin-top: 1.8rem;
+      font-size: 1.12rem;
+    }
+
+    .content :global(p) {
+      color: var(--text);
+    }
+
+    .content :global(a) {
+      color: var(--link);
+    }
+
+    .content :global(ul),
+    .content :global(ol) {
+      color: var(--text);
+    }
+
+    .content :global(blockquote) {
+      border-left: 3px solid var(--accent);
+      margin: 1.5rem 0;
+      padding: 0.2rem 1rem;
+      color: var(--text-muted);
+    }
+  </style>
+</Layout>

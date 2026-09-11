@@ -1,0 +1,515 @@
+---
+import Layout from '../layouts/Layout.astro';
+import {
+  profile,
+  highlights,
+  certifications,
+  skills,
+  experience,
+  education,
+  languages,
+} from '../data/resume';
+import { getCollection } from 'astro:content';
+
+const posts = (await getCollection('blog', ({ data }) => !data.draft))
+  .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())
+  .slice(0, 3);
+---
+
+<Layout title={`${profile.name} — ${profile.role}`}>
+  <section class="wrap hero">
+    <div class="hero-text">
+      <picture>
+        <source srcset="/images/avatar.webp" type="image/webp" />
+        <img src="/images/avatar.jpg" alt={profile.name} class="avatar" width="176" height="176" loading="eager" />
+      </picture>
+      <h1>{profile.name}</h1>
+      <p class="role">{profile.role}</p>
+      <div class="tag-row fields-row">
+        {profile.fields.map((field) => (
+          <span class="tag">{field}</span>
+        ))}
+      </div>
+      <p class="summary">{profile.summary}</p>
+      <div class="cta-row">
+        <a class="btn btn-primary" href="#contact">Contact</a>
+        <a class="btn" href="#experience">Experience</a>
+        <a class="btn" href={profile.github} target="_blank" rel="noopener noreferrer">GitHub</a>
+        <a class="btn" href={profile.linkedin} target="_blank" rel="noopener noreferrer">LinkedIn</a>
+      </div>
+    </div>
+
+    <div class="terminal card" aria-hidden="true">
+      <div class="terminal-bar">
+        <span class="tdot tdot-r"></span>
+        <span class="tdot tdot-y"></span>
+        <span class="tdot tdot-g"></span>
+        <span class="terminal-title mono">jorge@fabric-health</span>
+      </div>
+      <pre class="terminal-body mono"><code><span class="prompt">$</span> whoami
+{profile.role}
+
+<span class="prompt">$</span> cat fields.txt
+{profile.fields.join(' · ')}
+
+<span class="prompt">$</span> uptime
+8+ years, no unplanned downtime
+
+<span class="prompt">$</span> cat location.txt
+{profile.location}
+
+<span class="prompt">$</span> kubectl config current-context
+{profile.company}
+<span class="cursor">_</span></code></pre>
+    </div>
+  </section>
+
+  <section class="wrap highlights">
+    {highlights.map((h) => (
+      <div class="card highlight">
+        <div class="highlight-value mono">{h.value}</div>
+        <div class="highlight-label">{h.label}</div>
+      </div>
+    ))}
+  </section>
+
+  <hr class="rule wrap" />
+
+  <section class="wrap" id="skills">
+    <p class="eyebrow">Toolbox</p>
+    <h2 class="section-title">Skills & technologies</h2>
+    <div class="skills-grid">
+      {skills.map((group) => (
+        <div class="card skill-card">
+          <h3>{group.category}</h3>
+          <div class="tag-row">
+            {group.items.map((item) => (
+              <span class="tag">{item}</span>
+            ))}
+          </div>
+        </div>
+      ))}
+    </div>
+
+    <div class="cert-row">
+      {certifications.map((c) => (
+        <div class="cert card">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="cert-icon"><path d="M20 6 9 17l-5-5"/></svg>
+          <div>
+            <div class="cert-name">{c.name}</div>
+            <div class="cert-issuer muted">{c.issuer}</div>
+          </div>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <hr class="rule wrap" />
+
+  <section class="wrap" id="experience">
+    <p class="eyebrow">Career</p>
+    <h2 class="section-title">Experience</h2>
+    <div class="timeline">
+      {experience.map((job) => (
+        <article class="job">
+          <div class="job-header">
+            <div>
+              <h3>{job.title}</h3>
+              <p class="job-meta">{job.company} · {job.location}</p>
+            </div>
+            <p class="job-period mono">{job.period}</p>
+          </div>
+          {job.note && <p class="job-note">{job.note}</p>}
+          <ul>
+            {job.bullets.map((b) => (
+              <li>{b}</li>
+            ))}
+          </ul>
+        </article>
+      ))}
+    </div>
+  </section>
+
+  <hr class="rule wrap" />
+
+  <section class="wrap edu-lang">
+    <div>
+      <p class="eyebrow">Background</p>
+      <h2 class="section-title">Education</h2>
+      {education.map((e) => (
+        <div class="edu-item">
+          <p class="edu-degree">{e.degree}</p>
+          <p class="muted">{e.school}</p>
+          <p class="mono muted small">{e.period}</p>
+        </div>
+      ))}
+    </div>
+    <div>
+      <p class="eyebrow">Languages</p>
+      <h2 class="section-title">Languages</h2>
+      <ul class="lang-list">
+        {languages.map((l) => (
+          <li><strong>{l.name}</strong> <span class="muted">— {l.level}</span></li>
+        ))}
+      </ul>
+    </div>
+  </section>
+
+  {posts.length > 0 && (
+    <>
+      <hr class="rule wrap" />
+      <section class="wrap">
+        <div class="section-header-row">
+          <div>
+            <p class="eyebrow">Reliability Notes</p>
+            <h2 class="section-title">From the blog</h2>
+          </div>
+          <a class="btn" href="/blog">All posts</a>
+        </div>
+        <div class="post-grid">
+          {posts.map((post) => (
+            <a class="card post-card" href={`/blog/${post.id}/`}>
+              <p class="mono muted small">{post.data.pubDate.toLocaleDateString('en-GB', { year: 'numeric', month: 'short', day: 'numeric' })}</p>
+              <h3>{post.data.title}</h3>
+              <p class="muted">{post.data.description}</p>
+            </a>
+          ))}
+        </div>
+      </section>
+    </>
+  )}
+
+  <hr class="rule wrap" />
+
+  <section class="wrap contact" id="contact">
+    <p class="eyebrow">Contact</p>
+    <h2 class="section-title">Get in touch</h2>
+    <div class="cta-row">
+      <a class="btn btn-primary" href={`mailto:${profile.email}`}>
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 6-10 7L2 6"/></svg>
+        {profile.email}
+      </a>
+      <a class="btn" href={profile.linkedin} target="_blank" rel="noopener noreferrer">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M20.45 20.45h-3.55v-5.57c0-1.33-.02-3.03-1.85-3.03-1.86 0-2.15 1.45-2.15 2.94v5.66H9.35V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.38-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12zM7.12 20.45H3.56V9h3.56v11.45z"/></svg>
+        linkedin.com/in/jorgefcmartins
+      </a>
+      <a class="btn" href={profile.github} target="_blank" rel="noopener noreferrer">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5C5.73.5.98 5.24.98 11.5c0 5.01 3.29 9.26 7.86 10.76.57.1.78-.25.78-.55 0-.27-.01-1.16-.02-2.11-3.2.7-3.87-1.36-3.87-1.36-.53-1.33-1.29-1.69-1.29-1.69-1.05-.72.08-.7.08-.7 1.16.08 1.78 1.19 1.78 1.19 1.03 1.77 2.71 1.26 3.37.96.1-.75.4-1.26.73-1.55-2.55-.29-5.24-1.28-5.24-5.68 0-1.25.45-2.28 1.18-3.08-.12-.29-.51-1.46.11-3.05 0 0 .96-.31 3.15 1.17.91-.25 1.89-.38 2.86-.39.97.01 1.95.14 2.86.39 2.18-1.48 3.15-1.17 3.15-1.17.62 1.59.23 2.76.11 3.05.73.8 1.18 1.83 1.18 3.08 0 4.41-2.69 5.38-5.25 5.67.41.36.78 1.06.78 2.14 0 1.55-.01 2.79-.01 3.17 0 .3.21.66.79.55A10.52 10.52 0 0 0 23 11.5C23 5.24 18.27.5 12 .5z"/></svg>
+        github.com/jfcmartins
+      </a>
+    </div>
+  </section>
+
+  <style>
+    .hero {
+      padding-block: 4rem 2.5rem;
+      display: grid;
+      grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
+      gap: 2.5rem;
+      align-items: center;
+    }
+
+    .hero h1 {
+      font-size: clamp(2.2rem, 5vw, 3rem);
+      margin: 0 0 0.1rem;
+    }
+
+    .avatar {
+      width: 88px;
+      height: 88px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 2px solid var(--border);
+      margin-bottom: 1.1rem;
+      display: block;
+    }
+
+    .terminal {
+      overflow: hidden;
+      font-size: 0.85rem;
+    }
+
+    .terminal-bar {
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+      padding: 0.6rem 0.8rem;
+      border-bottom: 1px solid var(--border);
+      background: var(--bg-inset);
+    }
+
+    .tdot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      display: inline-block;
+    }
+
+    .tdot-r { background: #ff5f56; }
+    .tdot-y { background: #ffbd2e; }
+    .tdot-g { background: #27c93f; }
+
+    .terminal-title {
+      margin-left: 0.5rem;
+      color: var(--text-faint);
+      font-size: 0.78rem;
+    }
+
+    .terminal-body {
+      margin: 0;
+      padding: 1.1rem 1.2rem;
+      border: none;
+      border-radius: 0;
+      background: transparent;
+      color: var(--text-muted);
+      line-height: 1.7;
+      white-space: pre-wrap;
+      word-break: break-word;
+    }
+
+    .terminal-body .prompt {
+      color: var(--accent-strong);
+      font-weight: 600;
+    }
+
+    .terminal-body .cursor {
+      color: var(--accent-strong);
+      animation: blink 1.1s steps(1) infinite;
+    }
+
+    @keyframes blink {
+      50% { opacity: 0; }
+    }
+
+    @media (max-width: 760px) {
+      .hero {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .role {
+      font-size: 1.2rem;
+      color: var(--text-muted);
+      font-weight: 600;
+      margin: 0 0 0.7rem;
+    }
+
+    .fields-row {
+      margin-bottom: 1.1rem;
+    }
+
+    .summary {
+      max-width: 62ch;
+      color: var(--text-muted);
+      font-size: 1.02rem;
+    }
+
+    .cta-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      margin-top: 1.5rem;
+    }
+
+    .highlights {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+      gap: 0.9rem;
+      margin-top: 1rem;
+    }
+
+    .highlight {
+      padding: 1.2rem;
+      text-align: center;
+    }
+
+    .highlight-value {
+      font-size: 1.6rem;
+      font-weight: 700;
+      color: var(--accent-strong);
+    }
+
+    .highlight-label {
+      color: var(--text-muted);
+      font-size: 0.85rem;
+      margin-top: 0.35rem;
+    }
+
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1rem;
+    }
+
+    .skill-card {
+      padding: 1.1rem 1.2rem;
+    }
+
+    .skill-card h3 {
+      margin: 0 0 0.7rem;
+      font-size: 0.98rem;
+    }
+
+    .tag-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+    }
+
+    .cert-row {
+      margin-top: 1rem;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 0.9rem;
+    }
+
+    .cert {
+      padding: 0.9rem 1.1rem;
+      display: flex;
+      align-items: flex-start;
+      gap: 0.7rem;
+    }
+
+    .cert-icon {
+      color: var(--accent-strong);
+      margin-top: 0.15rem;
+      flex: none;
+    }
+
+    .cert-name {
+      font-weight: 600;
+      font-size: 0.92rem;
+    }
+
+    .cert-issuer {
+      font-size: 0.82rem;
+    }
+
+    .timeline {
+      display: flex;
+      flex-direction: column;
+      gap: 2.2rem;
+    }
+
+    .job-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      gap: 0.4rem 1rem;
+    }
+
+    .job h3 {
+      margin: 0;
+      font-size: 1.08rem;
+    }
+
+    .job-meta {
+      margin: 0.15rem 0 0;
+      color: var(--text-muted);
+      font-size: 0.9rem;
+    }
+
+    .job-period {
+      color: var(--text-faint);
+      font-size: 0.82rem;
+      white-space: nowrap;
+    }
+
+    .job-note {
+      font-style: italic;
+      color: var(--text-faint);
+      font-size: 0.88rem;
+      margin: 0.4rem 0 0.6rem;
+    }
+
+    .job ul {
+      margin: 0.6rem 0 0;
+      padding-left: 1.1rem;
+      color: var(--text-muted);
+      font-size: 0.94rem;
+    }
+
+    .job li {
+      margin-bottom: 0.4rem;
+    }
+
+    .edu-lang {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+    }
+
+    .edu-item {
+      margin-bottom: 1rem;
+    }
+
+    .edu-degree {
+      font-weight: 600;
+      margin: 0;
+    }
+
+    .small {
+      font-size: 0.8rem;
+    }
+
+    .lang-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+
+    .section-header-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+      margin-bottom: 1.25rem;
+    }
+
+    .section-header-row .section-title {
+      margin: 0;
+    }
+
+    .post-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1rem;
+    }
+
+    .post-card {
+      display: block;
+      padding: 1.1rem 1.2rem;
+      color: var(--text);
+    }
+
+    .post-card:hover {
+      text-decoration: none;
+      border-color: var(--accent);
+    }
+
+    .post-card h3 {
+      margin: 0.3rem 0 0.4rem;
+      font-size: 1.02rem;
+    }
+
+    .post-card p.muted {
+      font-size: 0.9rem;
+      margin: 0;
+    }
+
+    .contact {
+      padding-bottom: 2rem;
+    }
+
+    @media (max-width: 640px) {
+      .edu-lang {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</Layout>

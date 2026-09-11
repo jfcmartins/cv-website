@@ -1,0 +1,18 @@
+# Copy to terraform.tfvars (gitignored) and fill in your values.
+
+domain_name = "jorgemartins.xyz"
+aws_region  = "eu-west-1"
+include_www = true
+
+# "owner/repo" — whichever GitHub repo will run the deploy workflow.
+github_repo = "jfcmartins/cv-website"
+
+# Leave true unless this AWS account already has a GitHub OIDC provider
+# registered (only one is allowed per account for this URL).
+create_github_oidc_provider = true
+
+# Leave true to have Terraform create the Route53 hosted zone.
+# If you already created one (e.g. via the Route53 console when
+# registering the domain), set this to false and pass its ID below.
+create_hosted_zone = true
+# hosted_zone_id    = "Z0123456789ABCDEFGHIJ"

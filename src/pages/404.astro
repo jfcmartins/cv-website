@@ -1,0 +1,29 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout title="Page not found — Jorge Martins">
+  <section class="wrap not-found">
+    <p class="eyebrow"><span class="dot" style="background:var(--danger); box-shadow:0 0 0 3px color-mix(in srgb, var(--danger) 20%, transparent);"></span> 404</p>
+    <h1>Page not found</h1>
+    <p class="muted">The page you're looking for doesn't exist, or has moved.</p>
+    <a class="btn btn-primary" href="/">Back to home</a>
+  </section>
+
+  <style>
+    .not-found {
+      padding-block: 5rem;
+      text-align: center;
+    }
+
+    h1 {
+      font-size: 2rem;
+      margin: 0.75rem 0 0.5rem;
+    }
+
+    .muted {
+      color: var(--text-muted);
+      margin-bottom: 1.5rem;
+    }
+  </style>
+</Layout>
