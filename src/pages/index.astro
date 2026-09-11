@@ -77,7 +77,6 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
   <hr class="rule wrap" />
 
   <section class="wrap" id="skills">
-    <p class="eyebrow">Toolbox</p>
     <h2 class="section-title">Skills & technologies</h2>
     <div class="skills-grid">
       {skills.map((group) => (
@@ -96,7 +95,6 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
   <hr class="rule wrap" />
 
   <section class="wrap" id="certifications">
-    <p class="eyebrow">Credentials</p>
     <h2 class="section-title">Certifications</h2>
     <div class="cert-row">
       {certifications.map((c) => (
@@ -114,7 +112,6 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
   <hr class="rule wrap" />
 
   <section class="wrap" id="experience">
-    <p class="eyebrow">Career</p>
     <h2 class="section-title">Experience</h2>
     <div class="timeline">
       {experience.map((job) => (
@@ -141,7 +138,6 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 
   <section class="wrap edu-lang">
     <div>
-      <p class="eyebrow">Background</p>
       <h2 class="section-title">Education</h2>
       {education.map((e) => (
         <div class="edu-item">
@@ -152,13 +148,48 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
       ))}
     </div>
     <div>
-      <p class="eyebrow">Languages</p>
       <h2 class="section-title">Languages</h2>
       <ul class="lang-list">
         {languages.map((l) => (
           <li><strong>{l.name}</strong> <span class="muted">— {l.level}</span></li>
         ))}
       </ul>
+    </div>
+  </section>
+
+  <hr class="rule wrap" />
+
+  <section class="wrap">
+    <h2 class="section-title">Off the clock</h2>
+    <div class="cert-row">
+      <div class="cert card">
+        <span class="cert-icon hobby-emoji" aria-hidden="true">🏃</span>
+        <div>
+          <div class="cert-name">Running</div>
+          <div class="cert-issuer muted">Long runs to clear my head</div>
+        </div>
+      </div>
+      <div class="cert card">
+        <span class="cert-icon hobby-emoji" aria-hidden="true">🏋️</span>
+        <div>
+          <div class="cert-name">Gym</div>
+          <div class="cert-issuer muted">Consistency over intensity</div>
+        </div>
+      </div>
+      <div class="cert card">
+        <span class="cert-icon hobby-emoji" aria-hidden="true">🏄</span>
+        <div>
+          <div class="cert-name">Surfing & the beach</div>
+          <div class="cert-issuer muted">Chasing swells whenever the ocean cooperates</div>
+        </div>
+      </div>
+      <div class="cert card">
+        <span class="cert-icon hobby-emoji" aria-hidden="true">🎬</span>
+        <div>
+          <div class="cert-name">Movies & old series</div>
+          <div class="cert-issuer muted">Old favorites that take me back</div>
+        </div>
+      </div>
     </div>
   </section>
 
@@ -189,7 +220,6 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
   <hr class="rule wrap" />
 
   <section class="wrap contact" id="contact">
-    <p class="eyebrow">Contact</p>
     <h2 class="section-title">Get in touch</h2>
     <div class="cta-row">
       <a class="btn btn-primary" href={`mailto:${profile.email}`}>
@@ -380,6 +410,12 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
       color: var(--accent-strong);
       margin-top: 0.15rem;
       flex: none;
+    }
+
+    .hobby-emoji {
+      font-size: 1.3rem;
+      line-height: 1;
+      margin-top: 0;
     }
 
     .cert-name {
