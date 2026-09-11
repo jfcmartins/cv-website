@@ -121,11 +121,8 @@ export const experience: ExperienceEntry[] = [
     location: 'Portugal',
     period: 'Aug 2019 – Dec 2020',
     bullets: [
-      'Led a cross-functional team delivering high-consequence UK Energy Smart Metering platforms using Agile/Kanban.',
-      'Guided architecture and technology selection for a high-concurrency data access solution.',
-      'Engineered multi-cloud environments across AWS and Azure with CloudFormation (VPC, RDS, CloudFront, Lambda, API Gateway, Route53).',
-      'Oversaw production data integrity and security to meet ISO 27001 and UK government utility standards.',
-      'Mentored engineers and reviewed technical proposals to ensure product quality alignment.',
+      'Led a cross-functional team delivering high-consequence UK Energy Smart Metering platforms, guiding architecture and technology decisions using Agile/Kanban.',
+      'Engineered highly available multi-cloud environments across AWS and Azure with CloudFormation, meeting ISO 27001 and UK government utility compliance standards.',
     ],
   },
   {
@@ -134,10 +131,8 @@ export const experience: ExperienceEntry[] = [
     location: 'Portugal',
     period: 'Apr 2018 – Aug 2019',
     bullets: [
-      'Engineered automated environment provisioning across multiple AWS accounts with CloudFormation (S3, CloudFront, Route53, Lambda, API Gateway, Cognito) for a national-scale platform.',
-      'Developed CI/CD pipelines with Jenkins and Azure, automating Git workflows and shell scripting.',
-      'Built backend modules in Java (Maven) and maintained NoSQL data models for UK Smart Metering infrastructure.',
-      'Implemented automated testing suites with Robot Framework and Python, reducing manual regression testing time.',
+      'Engineered automated AWS provisioning with CloudFormation (S3, CloudFront, Route53, Lambda, API Gateway, Cognito) for a national-scale platform.',
+      'Built CI/CD pipelines with Jenkins and Azure, and automated testing suites with Robot Framework and Python.',
     ],
   },
   {

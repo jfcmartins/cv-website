@@ -206,5 +206,5 @@ h1, h2, h3, h4 {
 hr.rule {
   border: none;
   border-top: 1px solid var(--border);
-  margin: 3.5rem 0;
+  margin-block: 3.5rem;
 }
