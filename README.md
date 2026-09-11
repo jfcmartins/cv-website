@@ -1,8 +1,9 @@
 # jorgemartins.xyz
 
 Personal portfolio and blog for Jorge Martins — Staff Site Reliability Engineer.
-Built with [Astro](https://astro.build), deployed to AWS (S3 + CloudFront) via
-Terraform and GitHub Actions.
+Built with [Astro](https://astro.build). Currently deployed to **GitHub Pages**
+for testing; the long-term target is AWS (S3 + CloudFront) via Terraform and
+GitHub Actions — see `infra/`.
 
 ## Project structure
 
@@ -44,6 +45,23 @@ Post content in markdown.
 ```
 
 It'll show up automatically on `/blog` and at `/blog/<filename>/`.
+
+## Deploying to GitHub Pages (current, for testing)
+
+`.github/workflows/github-pages.yml` builds and deploys on every push to
+`main`. One-time setup: **Settings → Pages → Source: GitHub Actions**. The
+site will be live at `https://jfcmartins.github.io/cv-website/`.
+
+Since a GitHub Pages *project* site is served from a `/cv-website` subpath
+(unless a custom domain is attached), the build sets `base: '/cv-website'`
+whenever the `GITHUB_PAGES=true` env var is present (see `astro.config.mjs`)
+— every internal link and asset path in the templates is built from
+`import.meta.env.BASE_URL` so it works under both the subpath and the future
+root-domain AWS deploy without further changes.
+
+To point a custom domain at GitHub Pages instead of a subpath, add a `CNAME`
+file to `public/` and set `base: '/'` unconditionally — but the plan here is
+to move to AWS instead once `infra/` is applied.
 
 ## Infrastructure (AWS via Terraform)
 

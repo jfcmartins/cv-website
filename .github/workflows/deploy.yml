@@ -1,11 +1,11 @@
-name: Deploy site
+name: Deploy site (AWS)
 
+# Manual-only until the Terraform in infra/ has been applied and the
+# AWS_DEPLOY_ROLE_ARN / AWS_REGION / SITE_BUCKET_NAME /
+# CLOUDFRONT_DISTRIBUTION_ID repo variables are set (see README). Switch the
+# trigger back to `push: branches: [main]` at that point — GitHub Pages
+# (github-pages.yml) handles deploys automatically until then.
 on:
-  push:
-    branches: [main]
-    paths-ignore:
-      - 'infra/**'
-      - '**.md'
   workflow_dispatch: {}
 
 permissions:
