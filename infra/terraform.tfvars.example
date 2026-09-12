@@ -1,10 +1,13 @@
 # Copy to terraform.tfvars (gitignored) and fill in your values.
 
+# Keep in sync with SITE_DOMAIN in site.config.mjs.
 domain_name = "jorgemartins.xyz"
 aws_region  = "eu-west-1"
 include_www = true
 
 # "owner/repo" — whichever GitHub repo will run the deploy workflow.
+# Keep in sync with GITHUB_USERNAME/GITHUB_REPO in site.config.mjs
+# (Terraform can't import that file directly, so this stays manual).
 github_repo = "jfcmartins/jorgemartins-site"
 
 # Leave true unless this AWS account already has a GitHub OIDC provider

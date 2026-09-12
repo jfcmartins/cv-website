@@ -1,10 +1,12 @@
+import { GITHUB_URL } from '../../site.config.mjs';
+
 export const profile = {
   name: 'Jorge Martins',
   role: 'Staff Site Reliability Engineer',
   fields: ['DevOps', 'Platform Engineering', 'Reliability'],
   company: 'Fabric Health',
   location: 'Coimbra, Portugal',
-  github: 'https://github.com/jfcmartins',
+  github: GITHUB_URL,
   email: 'jorgecunhamartins@gmail.com',
   linkedin: 'https://linkedin.com/in/jorgefcmartins',
   summary:
