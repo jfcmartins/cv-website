@@ -29,26 +29,32 @@ export const certifications = [
 export const skills = [
   {
     category: 'Cloud & Platform',
+    icon: 'cloud',
     items: ['AWS', 'GCP', 'Kubernetes (EKS/GKE)', 'Docker', 'Karpenter', 'KEDA'],
   },
   {
     category: 'Provisioning & IaC',
+    icon: 'layers',
     items: ['Terraform', 'Terragrunt', 'Pulumi', 'CloudFormation', 'Helm', 'Ansible', 'Atlantis'],
   },
   {
     category: 'CI/CD & Automation',
+    icon: 'refresh',
     items: ['GitHub Actions', 'Jenkins', 'Azure DevOps', 'Python', 'Java', 'Bash', 'Robot Framework'],
   },
   {
     category: 'Observability',
+    icon: 'activity',
     items: ['Datadog', 'Prometheus', 'Grafana', 'ELK / ECK', 'CloudWatch'],
   },
   {
     category: 'Data & Messaging',
+    icon: 'database',
     items: ['Kafka', 'Redis', 'RDS PostgreSQL', 'Elasticsearch', 'MongoDB', 'Databricks'],
   },
   {
     category: 'Security & Networking',
+    icon: 'shield',
     items: ['VPC Architecture', 'IAM', 'PrivateLink', 'WAF', 'Cert-Manager', 'HashiCorp Vault', 'Consul'],
   },
 ];
@@ -63,6 +69,7 @@ export type Role = {
 export type CompanyExperience = {
   company: string;
   location: string;
+  logo?: string;
   roles: Role[];
 };
 
@@ -73,6 +80,7 @@ export const experience: CompanyExperience[] = [
   {
     company: 'Fabric Health (formerly GYANT)',
     location: 'Remote, Portugal',
+    logo: '/images/logos/fabric-health.png',
     roles: [
       {
         title: 'Staff Site Reliability Engineer',
@@ -94,6 +102,7 @@ export const experience: CompanyExperience[] = [
   {
     company: 'Tribusmed',
     location: 'Remote, Portugal',
+    logo: '/images/logos/tribusmed.png',
     roles: [
       {
         title: 'Cloud Engineer (Freelancer)',
@@ -109,6 +118,7 @@ export const experience: CompanyExperience[] = [
   {
     company: 'GYANT',
     location: 'Remote, Portugal',
+    logo: '/images/logos/gyant.png',
     roles: [
       {
         title: 'Senior Platform Engineer',
@@ -126,6 +136,7 @@ export const experience: CompanyExperience[] = [
   {
     company: 'Talkdesk',
     location: 'Remote, Portugal',
+    logo: '/images/logos/talkdesk.png',
     roles: [
       {
         title: 'Site Reliability Engineer',
@@ -143,6 +154,7 @@ export const experience: CompanyExperience[] = [
   {
     company: 'Critical Software',
     location: 'Portugal',
+    logo: '/images/logos/critical-software.png',
     roles: [
       {
         title: 'Technical Team Lead & DevOps Architect',
@@ -165,6 +177,7 @@ export const experience: CompanyExperience[] = [
   {
     company: 'Sentilant',
     location: 'Portugal',
+    logo: '/images/logos/sentilant.jpg',
     roles: [
       {
         title: 'Software Engineer (Internship)',
@@ -182,11 +195,13 @@ export const education = [
   {
     degree: "Bachelor's Degree in Computer Science",
     school: 'Instituto Superior de Engenharia de Coimbra, Portugal',
+    logo: '/images/logos/isec.png',
     period: 'March 2018',
   },
   {
     degree: 'ERASMUS+ International Exchange',
     school: 'Universidad Rey Juan Carlos, Madrid, Spain',
+    logo: '/images/logos/urjc.png',
     period: 'February 2017',
   },
 ];
