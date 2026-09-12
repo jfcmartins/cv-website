@@ -103,6 +103,7 @@ export const experience: CompanyExperience[] = [
     company: 'Tribusmed',
     location: 'Remote, Portugal',
     logo: '/images/logos/tribusmed.png',
+    logoBg: true,
     roles: [
       {
         title: 'Cloud Engineer (Freelancer)',
@@ -196,12 +197,14 @@ export const education = [
     degree: "Bachelor's Degree in Computer Science",
     school: 'Instituto Superior de Engenharia de Coimbra, Portugal',
     logo: '/images/logos/isec.png',
+    logoBg: true,
     period: 'March 2018',
   },
   {
     degree: 'ERASMUS+ International Exchange',
     school: 'Universidad Rey Juan Carlos, Madrid, Spain',
     logo: '/images/logos/urjc.png',
+    logoBg: true,
     period: 'February 2017',
   },
 ];

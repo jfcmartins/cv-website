@@ -150,7 +150,7 @@ const skillIcons = {
           <article class="job">
             <div class="job-header">
               <div class="job-title-row">
-                {entry.logo && <img class="company-logo" src={`${base}${entry.logo}`} alt="" width="32" height="32" loading="lazy" />}
+                {entry.logo && <img class:list={['company-logo', { 'logo-bg': entry.logoBg }]} src={`${base}${entry.logo}`} alt="" width="32" height="32" loading="lazy" />}
                 <div>
                   <h3>{entry.roles[0].title}</h3>
                   <p class="job-meta">{entry.company} · {entry.location}</p>
@@ -169,7 +169,7 @@ const skillIcons = {
           <article class="job">
             <div class="job-header">
               <div class="job-title-row">
-                {entry.logo && <img class="company-logo" src={`${base}${entry.logo}`} alt="" width="32" height="32" loading="lazy" />}
+                {entry.logo && <img class:list={['company-logo', { 'logo-bg': entry.logoBg }]} src={`${base}${entry.logo}`} alt="" width="32" height="32" loading="lazy" />}
                 <div>
                   <h3>{entry.company}</h3>
                   <p class="job-meta">{entry.location}</p>
@@ -206,7 +206,7 @@ const skillIcons = {
       {education.map((e) => (
         <div class="edu-item">
           <div class="job-title-row">
-            {e.logo && <img class="company-logo" src={`${base}${e.logo}`} alt="" width="24" height="24" loading="lazy" />}
+            {e.logo && <img class:list={['company-logo', { 'logo-bg': e.logoBg }]} src={`${base}${e.logo}`} alt="" width="24" height="24" loading="lazy" />}
             <p class="edu-degree">{e.degree}</p>
           </div>
           <p class="muted">{e.school}</p>
@@ -542,6 +542,15 @@ const skillIcons = {
       flex: none;
       object-fit: contain;
       border-radius: 7px;
+    }
+
+    /* Some source logos are dark marks on a transparent background --
+       nearly invisible on the dark theme without a light backing. */
+    .company-logo.logo-bg {
+      background: #fff;
+      border: 1px solid var(--border);
+      padding: 3px;
+      box-sizing: border-box;
     }
 
     .job h3 {
