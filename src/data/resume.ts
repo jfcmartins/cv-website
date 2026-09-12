@@ -3,7 +3,7 @@ import { GITHUB_URL } from '../../site.config.mjs';
 export const profile = {
   name: 'Jorge Martins',
   role: 'Staff Site Reliability Engineer',
-  fields: ['DevOps', 'Platform Engineering', 'Reliability'],
+  fields: ['DevOps', 'Platform Engineering', 'Site Reliability'],
   company: 'Fabric Health',
   location: 'Coimbra, Portugal',
   github: GITHUB_URL,
