@@ -5,6 +5,9 @@
 export const GITHUB_USERNAME = 'jfcmartins';
 export const GITHUB_REPO = 'jorgemartins-site';
 export const SITE_DOMAIN = 'jorgemartins.xyz';
+export const EMAIL = 'jorgecunhamartins@gmail.com';
+export const LINKEDIN_USERNAME = 'jorgefcmartins';
 
 export const GITHUB_URL = `https://github.com/${GITHUB_USERNAME}`;
 export const GITHUB_PAGES_URL = `https://${GITHUB_USERNAME}.github.io`;
+export const LINKEDIN_URL = `https://linkedin.com/in/${LINKEDIN_USERNAME}`;

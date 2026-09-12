@@ -1,4 +1,4 @@
-import { GITHUB_URL } from '../../site.config.mjs';
+import { GITHUB_URL, EMAIL, LINKEDIN_URL } from '../../site.config.mjs';
 
 export const profile = {
   name: 'Jorge Martins',
@@ -7,8 +7,8 @@ export const profile = {
   company: 'Fabric Health',
   location: 'Coimbra, Portugal',
   github: GITHUB_URL,
-  email: 'jorgecunhamartins@gmail.com',
-  linkedin: 'https://linkedin.com/in/jorgefcmartins',
+  email: EMAIL,
+  linkedin: LINKEDIN_URL,
   summary:
     '8+ years across DevOps, Platform Engineering, and Site Reliability — provisioning, orchestration, observability, and CI/CD for reliable, scalable cloud infrastructure in healthcare and utility platforms.',
 };
