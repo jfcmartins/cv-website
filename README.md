@@ -50,11 +50,12 @@ It'll show up automatically on `/blog` and at `/blog/<filename>/`.
 
 `.github/workflows/github-pages.yml` builds and deploys on every push to
 `main`. One-time setup: **Settings → Pages → Source: GitHub Actions**. The
-site will be live at `https://jfcmartins.github.io/cv-website/`.
+site will be live at `https://jfcmartins.github.io/jorgemartins-site/`.
 
-Since a GitHub Pages *project* site is served from a `/cv-website` subpath
-(unless a custom domain is attached), the build sets `base: '/cv-website'`
-whenever the `GITHUB_PAGES=true` env var is present (see `astro.config.mjs`)
+Since a GitHub Pages *project* site is served from a `/jorgemartins-site`
+subpath (unless a custom domain is attached), the build sets
+`base: '/jorgemartins-site'` whenever the `GITHUB_PAGES=true` env var is
+present (see `astro.config.mjs`)
 — every internal link and asset path in the templates is built from
 `import.meta.env.BASE_URL` so it works under both the subpath and the future
 root-domain AWS deploy without further changes.

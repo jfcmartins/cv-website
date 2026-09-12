@@ -10,5 +10,5 @@ const isGithubPages = process.env.GITHUB_PAGES === 'true';
 // https://astro.build/config
 export default defineConfig({
   site: isGithubPages ? 'https://jfcmartins.github.io' : 'https://jorgemartins.xyz',
-  base: isGithubPages ? '/cv-website' : '/',
+  base: isGithubPages ? '/jorgemartins-site' : '/',
 });
