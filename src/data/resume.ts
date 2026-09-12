@@ -207,7 +207,7 @@ export const education = [
 ];
 
 export const languages = [
-  { name: 'Portuguese', level: 'Native' },
-  { name: 'English', level: 'Full Professional (C1)' },
-  { name: 'Spanish', level: 'Working Proficiency' },
+  { name: 'Portuguese', level: 'Native', flag: '🇵🇹' },
+  { name: 'English', level: 'Full Professional (C1)', flag: '🇬🇧' },
+  { name: 'Spanish', level: 'Working Proficiency', flag: '🇪🇸' },
 ];
