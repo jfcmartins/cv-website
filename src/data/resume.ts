@@ -21,9 +21,9 @@ export const highlights = [
 ];
 
 export const certifications = [
-  { name: 'Certified Kubernetes Administrator (CKA)', issuer: 'Linux Foundation' },
-  { name: 'Certified Kubernetes Application Developer (CKAD)', issuer: 'Linux Foundation' },
-  { name: 'Terraform Associate', issuer: 'HashiCorp' },
+  { name: 'Certified Kubernetes Administrator (CKA)', issuer: 'Linux Foundation', icon: 'kubernetes' },
+  { name: 'Certified Kubernetes Application Developer (CKAD)', issuer: 'Linux Foundation', icon: 'kubernetes' },
+  { name: 'Terraform Associate', issuer: 'HashiCorp', icon: 'terraform' },
 ];
 
 export const skills = [
