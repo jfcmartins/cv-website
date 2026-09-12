@@ -53,98 +53,127 @@ export const skills = [
   },
 ];
 
-export type ExperienceEntry = {
+export type Role = {
   title: string;
-  company: string;
-  location: string;
   period: string;
   note?: string;
   bullets: string[];
 };
 
-export const experience: ExperienceEntry[] = [
+export type CompanyExperience = {
+  company: string;
+  location: string;
+  roles: Role[];
+};
+
+// Consecutive roles at the same company (e.g. Critical Software) are
+// grouped under one entry so the timeline can show the internal career
+// path with a connecting line, instead of repeating the company name.
+export const experience: CompanyExperience[] = [
   {
-    title: 'Staff Site Reliability Engineer',
     company: 'Fabric Health (formerly GYANT)',
     location: 'Remote, Portugal',
-    period: 'Jan 2024 – Present',
-    note: 'Promoted from Senior Platform Engineer to lead architectural strategy and platform maturity',
-    bullets: [
-      'Led a large-scope VPC refactor and EKS Auto Mode migration across multiple systems with zero service disruption.',
-      'Achieved $50k/year in AWS compute savings by implementing Karpenter for dynamic autoscaling.',
-      'Hardened platform security via private-only database connectivity, AWS WAF integration, and automated IAM permission management.',
-      'Designed a unified provisioning repository and standardized Service Catalog to streamline developer workflows.',
-      'Standardized global monitoring by migrating the observability stack from Prometheus/ELK to Datadog.',
-      'Executed zero-downtime Kubernetes cluster upgrades and resolved long-standing ACM certificate and legacy load balancer issues.',
-      'Migrated from Kubernetes Ingress to the Gateway API, decommissioning Ingress NGINX in favor of kgateway.',
-      'Reviewed complex technical proposals and PRs org-wide to prevent architectural bottlenecks.',
+    roles: [
+      {
+        title: 'Staff Site Reliability Engineer',
+        period: 'Jan 2024 – Present',
+        note: 'Promoted from Senior Platform Engineer to lead architectural strategy and platform maturity',
+        bullets: [
+          'Led a large-scope VPC refactor and EKS Auto Mode migration across multiple systems with zero service disruption.',
+          'Achieved $50k/year in AWS compute savings by implementing Karpenter for dynamic autoscaling.',
+          'Hardened platform security via private-only database connectivity, AWS WAF integration, and automated IAM permission management.',
+          'Designed a unified provisioning repository and standardized Service Catalog to streamline developer workflows.',
+          'Standardized global monitoring by migrating the observability stack from Prometheus/ELK to Datadog.',
+          'Executed zero-downtime Kubernetes cluster upgrades and resolved long-standing ACM certificate and legacy load balancer issues.',
+          'Migrated from Kubernetes Ingress to the Gateway API, decommissioning Ingress NGINX in favor of kgateway.',
+          'Reviewed complex technical proposals and PRs org-wide to prevent architectural bottlenecks.',
+        ],
+      },
     ],
   },
   {
-    title: 'Cloud Engineer (Freelancer)',
     company: 'Tribusmed',
     location: 'Remote, Portugal',
-    period: 'Oct 2023 – Jan 2024',
-    bullets: [
-      'Architected and automated GCP resource provisioning with Pulumi, moving from manual configuration to fully version-controlled infrastructure.',
-      'Configured KEDA to scale Kubernetes workloads dynamically based on GCP Pub/Sub metrics.',
-      'Designed CI/CD pipelines in GitHub Actions supporting ephemeral environments for rapid feature testing.',
+    roles: [
+      {
+        title: 'Cloud Engineer (Freelancer)',
+        period: 'Oct 2023 – Jan 2024',
+        bullets: [
+          'Architected and automated GCP resource provisioning with Pulumi, moving from manual configuration to fully version-controlled infrastructure.',
+          'Configured KEDA to scale Kubernetes workloads dynamically based on GCP Pub/Sub metrics.',
+          'Designed CI/CD pipelines in GitHub Actions supporting ephemeral environments for rapid feature testing.',
+        ],
+      },
     ],
   },
   {
-    title: 'Senior Platform Engineer',
     company: 'GYANT',
     location: 'Remote, Portugal',
-    period: 'May 2022 – Dec 2023',
-    bullets: [
-      'Architected and maintained high-availability Kubernetes clusters with custom Helm charts and NGINX/Cert-Manager ingress.',
-      'Built and scaled a centralized logging and monitoring solution using ECK and the ELK stack for high-volume healthcare data.',
-      'Managed AWS environments via Terraform and implemented Policy-as-Code to meet HITRUST healthcare compliance standards.',
-      'Facilitated deployment of self-hosted AI vector databases and large-scale data pipelines for AI-driven healthcare features.',
-      'Migrated legacy Travis CI pipelines to GitHub Actions, cutting build times by 50%.',
+    roles: [
+      {
+        title: 'Senior Platform Engineer',
+        period: 'May 2022 – Dec 2023',
+        bullets: [
+          'Architected and maintained high-availability Kubernetes clusters with custom Helm charts and NGINX/Cert-Manager ingress.',
+          'Built and scaled a centralized logging and monitoring solution using ECK and the ELK stack for high-volume healthcare data.',
+          'Managed AWS environments via Terraform and implemented Policy-as-Code to meet HITRUST healthcare compliance standards.',
+          'Facilitated deployment of self-hosted AI vector databases and large-scale data pipelines for AI-driven healthcare features.',
+          'Migrated legacy Travis CI pipelines to GitHub Actions, cutting build times by 50%.',
+        ],
+      },
     ],
   },
   {
-    title: 'Site Reliability Engineer',
     company: 'Talkdesk',
     location: 'Remote, Portugal',
-    period: 'Jan 2021 – Apr 2022',
-    bullets: [
-      'Orchestrated global AWS infrastructure with Terraform and Terragrunt, implementing Atlantis for a PR-driven GitOps workflow.',
-      'Automated lifecycle management of Kafka, Redis, RDS PostgreSQL, Elasticsearch, and MongoDB with Ansible.',
-      'Managed large-scale Kubernetes clusters and Git-based CI/CD workflows via Jenkins.',
-      'Implemented HashiCorp Vault for secret orchestration and Consul for service discovery and health monitoring.',
-      'Handled zero-downtime Elasticsearch index migrations and managed Databricks workspace access control.',
+    roles: [
+      {
+        title: 'Site Reliability Engineer',
+        period: 'Jan 2021 – Apr 2022',
+        bullets: [
+          'Orchestrated global AWS infrastructure with Terraform and Terragrunt, implementing Atlantis for a PR-driven GitOps workflow.',
+          'Automated lifecycle management of Kafka, Redis, RDS PostgreSQL, Elasticsearch, and MongoDB with Ansible.',
+          'Managed large-scale Kubernetes clusters and Git-based CI/CD workflows via Jenkins.',
+          'Implemented HashiCorp Vault for secret orchestration and Consul for service discovery and health monitoring.',
+          'Handled zero-downtime Elasticsearch index migrations and managed Databricks workspace access control.',
+        ],
+      },
     ],
   },
   {
-    title: 'Technical Team Lead & DevOps Architect',
     company: 'Critical Software',
     location: 'Portugal',
-    period: 'Aug 2019 – Dec 2020',
-    bullets: [
-      'Led a cross-functional team delivering high-consequence UK Energy Smart Metering platforms, guiding architecture and technology decisions using Agile/Kanban.',
-      'Engineered highly available multi-cloud environments across AWS and Azure with CloudFormation, meeting ISO 27001 and UK government utility compliance standards.',
+    roles: [
+      {
+        title: 'Technical Team Lead & DevOps Architect',
+        period: 'Aug 2019 – Dec 2020',
+        bullets: [
+          'Led a cross-functional team delivering high-consequence UK Energy Smart Metering platforms, guiding architecture and technology decisions using Agile/Kanban.',
+          'Engineered highly available multi-cloud environments across AWS and Azure with CloudFormation, meeting ISO 27001 and UK government utility compliance standards.',
+        ],
+      },
+      {
+        title: 'DevOps Engineer',
+        period: 'Apr 2018 – Aug 2019',
+        bullets: [
+          'Engineered automated AWS provisioning with CloudFormation (S3, CloudFront, Route53, Lambda, API Gateway, Cognito) for a national-scale platform.',
+          'Built CI/CD pipelines with Jenkins and Azure, and automated testing suites with Robot Framework and Python.',
+        ],
+      },
     ],
   },
   {
-    title: 'DevOps Engineer',
-    company: 'Critical Software',
-    location: 'Portugal',
-    period: 'Apr 2018 – Aug 2019',
-    bullets: [
-      'Engineered automated AWS provisioning with CloudFormation (S3, CloudFront, Route53, Lambda, API Gateway, Cognito) for a national-scale platform.',
-      'Built CI/CD pipelines with Jenkins and Azure, and automated testing suites with Robot Framework and Python.',
-    ],
-  },
-  {
-    title: 'Software Engineer (Internship)',
     company: 'Sentilant',
     location: 'Portugal',
-    period: 'Sep 2017 – Mar 2018',
-    bullets: [
-      'Developed a vehicle telemetry system end-to-end, including a data acquisition device and an ASP.NET Core web server.',
-      'Built an Android app for trip management and designed a MySQL database for real-time telemetry data.',
+    roles: [
+      {
+        title: 'Software Engineer (Internship)',
+        period: 'Sep 2017 – Mar 2018',
+        bullets: [
+          'Developed a vehicle telemetry system end-to-end, including a data acquisition device and an ASP.NET Core web server.',
+          'Built an Android app for trip management and designed a MySQL database for real-time telemetry data.',
+        ],
+      },
     ],
   },
 ];
